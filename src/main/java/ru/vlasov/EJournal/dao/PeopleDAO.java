@@ -2,6 +2,7 @@ package ru.vlasov.EJournal.dao;
 
 import com.sun.javafx.scene.control.skin.VirtualFlow;
 import org.springframework.stereotype.Component;
+import ru.vlasov.EJournal.models.Person;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -25,5 +26,8 @@ public class PeopleDAO {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+    public Person index(){
+        return null;
     }
 }
