@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>People</title>
@@ -10,7 +10,11 @@
 <hr/>
 <br/>
 <br/>
-<h2 align="center"><a href="/EJournal/people/new">Add a new Persoь</a></h2>
-
+<h2 align="center"><a href="/EJournal/people/new">Add a new Person</a></h2>
+<br/>
+<div th:each="participant : ${people}">
+    <a th:href="google.com"
+       th:text="${participant.getFullName() + ', ' + participant.getPhone()}">user</a>
+</div>
 </body>
 </html>

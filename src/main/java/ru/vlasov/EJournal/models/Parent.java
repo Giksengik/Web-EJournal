@@ -1,8 +1,10 @@
 package ru.vlasov.EJournal.models;
 
 public class Parent extends Person {
-    public Parent(String fullName, int phone) {
+    public Parent(String fullName, String phone) {
         super(fullName, phone);
     }
-    public static String status="PARENT";
+    public Parent(){
+
+    }
 }
