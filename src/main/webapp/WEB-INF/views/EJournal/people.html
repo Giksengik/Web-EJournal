@@ -13,8 +13,8 @@
 <h2 align="center"><a href="/EJournal/people/new">Add a new Person</a></h2>
 <br/>
 <div th:each="participant : ${people}">
-    <a th:href="google.com"
-       th:text="${participant.getFullName() + ', ' + participant.getPhone()}">user</a>
+    <h3 align="center"><a th:href="google.com"
+           th:text="${participant.getFullName() + ', ' + participant.getPhone()}">user</a></h3>
 </div>
 </body>
 </html>

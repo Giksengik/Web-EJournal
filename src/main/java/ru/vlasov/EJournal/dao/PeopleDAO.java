@@ -34,10 +34,10 @@ public class PeopleDAO {
         ArrayList<Participant> people = new ArrayList<>();
         try {
             Statement statement= connection.createStatement();
-            String CMND="SELECT MAX(id)as max FROM People";
+            String CMND="SELECT MAX(cardid) FROM People";
             ResultSet resultSet = statement.executeQuery(CMND);
             resultSet.next();
-            PEOPLE_COUNT=resultSet.getInt("max");
+            PEOPLE_COUNT=resultSet.getInt("cardid");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -62,14 +62,14 @@ public class PeopleDAO {
                                 resultSet.getString("second_parent_phone"));
                         Learner newLearner= new Learner();
                         newLearner.setParents(new Parent[]{firstParent, secondParent});
-                        newLearner.setCardID(resultSet.getInt("id"));
+                        newLearner.setCardID(resultSet.getInt("cardid"));
                         newLearner.setFullName(resultSet.getString("name"));
                         newLearner.setPhone(resultSet.getString("phone"));
                         people.add(newLearner);
                         break;
                     case "TEACHER":
                         Teacher newTeacher= new Teacher();
-                        newTeacher.setCardID(resultSet.getInt("id"));
+                        newTeacher.setCardID(resultSet.getInt("cardid"));
                         newTeacher.setFullName(resultSet.getString("name"));
                         newTeacher.setPhone(resultSet.getString("phone"));
                         newTeacher.setQualifications(resultSet.getString("qualification"));
