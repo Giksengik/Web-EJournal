@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher</title>
+</head>
+<body>
+    <p th:text="${'Full name: '+teacher.getFullName()}">VALUE</p>
+    <p th:text="${'Phone: ' + teacher.getPhone()}">VALUE</p>
+    <p th:text="${'CardID: '+teacher.getCardID()}">VALUE</p>
+    <p th:text="${'Position: '+teacher.getPosition()}">VALUE</p>
+    <p th:text="${'Qualifications: '+teacher.getQualifications()}">VALUE</p>
+</body>
+</html>

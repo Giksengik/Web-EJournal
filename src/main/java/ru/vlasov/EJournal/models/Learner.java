@@ -2,11 +2,10 @@ package ru.vlasov.EJournal.models;
 
 public class Learner extends Participant {
     public Parent [] parents;
-    public Learner(String fullName, String phone, int cardID, Parent[] parents) {
-        super(fullName, phone, cardID);
+    public Learner(String fullName, String phone, int cardID, Parent[] parents,String status) {
+        super(fullName, phone, cardID,status);
         this.parents = parents;
     }
-    public static String status="LEARNER";
 
     public Parent[] getParents() {
         return parents;

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Learner</title>
+</head>
+<body>
+    <p th:text="${'Full name: '+learner.getFullName()}">VALUE</p>
+    <p th:text="${'Phone: ' + learner.getPhone()}">VALUE</p>
+    <p th:text="${'CardID: '+learner.getCardID()}">VALUE</p>
+    <p th:text="${'First parent full name: '+learner.getParents()[0].getFullName()}">VALUE</p>
+    <p th:text="${'First parent phone: '+learner.getParents()[0].getPhone()}">VALUE</p>
+    <p th:text="${'Second parent full name : '+learner.getParents()[1].getFullName()}">VALUE</p>
+    <p th:text="${'Second parent phone: '+learner.getParents()[1].getPhone()}">VALUE</p>
+</body>
+</html>

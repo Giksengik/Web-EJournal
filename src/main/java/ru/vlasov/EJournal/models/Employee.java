@@ -2,11 +2,10 @@ package ru.vlasov.EJournal.models;
 
 public class Employee extends Participant {
     public String position;
-    public Employee(String fullName, String phone, int cardID,String position) {
-        super(fullName, phone, cardID);
+    public Employee(String fullName, String phone, int cardID,String position,String status) {
+        super(fullName, phone, cardID,status);
         this.position=position;
     }
-    public static String status="EMPLOYEE";
     public String getPosition() {
         return position;
     }
