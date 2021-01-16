@@ -3,11 +3,12 @@ package ru.vlasov.EJournal.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import ru.vlasov.EJournal.dao.PeopleDAO;
+import ru.vlasov.EJournal.models.Employee;
+import ru.vlasov.EJournal.models.Learner;
 import ru.vlasov.EJournal.models.Participant;
+import ru.vlasov.EJournal.models.Teacher;
 
 @Controller
 @RequestMapping("/EJournal")
@@ -54,6 +55,29 @@ public class PeopleController {
         }
         return null;
     }
+    @GetMapping("/people/new_learner")
+    public String newLearner(@ModelAttribute("learner") Learner learner){
+        return("/EJournal/new_learner");
+    }
+    @GetMapping("/people/new_employee")
+    public String newEmployee(@ModelAttribute("employee")Employee employee){
+        return("/EJournal/new_employee");
+    }
+    @GetMapping("/people/new_teacher")
+    public String newTeacher(@ModelAttribute("teacher")Teacher teacher){
+        return("/EJournal/new_teacher");
+    }
+    @RequestMapping(value = "/people", method = RequestMethod.POST,params="{}")
+    public String createEmployee(@ModelAttribute("employee")Employee employee){
+        peopleDAO.addNewEmployee(employee);
+        return"redirect:/EJournal/people";
+    }
+    @RequestMapping(value = "/people", method = RequestMethod.POST)
+    public String createLearner(@ModelAttribute("learner")Learner learner){
+        peopleDAO.addNewLearner(learner);
+        return"redirect:/EJournal/people";
+    }
+
 
 
 }

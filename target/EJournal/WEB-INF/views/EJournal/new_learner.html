@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/EJournal/people/new}" th:object="${learner}">
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    <label for="name">Enter name: </label>
+    <input type="text" th:field="*{fullName}" id="name"/>
+    <br/>
+    <label for="phone">Enter phone: </label>
+    <input type="text" th:field="*{phone}" id="phone"/>
+    <br/>
+    <label for="firstParentName">Enter first parent name: </label>
+    <input type="text" th:field="*{firstParentName}" id="firstParentName"/>
+    <br/>
+    <label for="firstParentPhone">Enter first parent phone: </label>
+    <input type="text" th:field="*{firstParentPhone}" id="firstParentPhone"/>
+    <br/>
+    <label for="secondParentName">Enter second parent name: </label>
+    <input type="text" th:field="*{secondParentName}" id="secondParentName"/>
+    <br/>
+    <label for="secondParentPhone">Enter second parent phone: </label>
+    <input type="text" th:field="*{secondParentPhone}" id="secondParentPhone"/>
+    <br/>
+    <input type="submit" value="Create!"/>
+</form>
+</body>
+</html>

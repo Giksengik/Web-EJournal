@@ -46,7 +46,7 @@ public class PeopleDAO {
             String CMND="SELECT MAX(cardid) FROM People";
             ResultSet resultSet = statement.executeQuery(CMND);
             resultSet.next();
-            PEOPLE_COUNT=resultSet.getInt("cardid");
+            PEOPLE_COUNT=resultSet.getInt("max");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -98,7 +98,7 @@ public class PeopleDAO {
         Teacher teacher=null;
         try {
             PreparedStatement preparedStatement = connection.prepareStatement
-                    ("SELECT * FROM People WHERE cardid=? AND  status='TEACHER'");
+                    ("SELECT * FROM people WHERE cardid=? AND  status='TEACHER'");
             preparedStatement.setInt(1,id);
             ResultSet resultSet =preparedStatement.executeQuery();
             resultSet.next();
@@ -157,5 +157,41 @@ public class PeopleDAO {
             throwables.printStackTrace();
         }
         return employee;
+    }
+    public void addNewEmployee(Employee employee){
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("INSERT INTO People(status,cardid,position,phone,name)" +
+                            " VALUES(?,?,?,?,?)");
+            preparedStatement.setString(1,"EMPLOYEE");
+            preparedStatement.setString(3,employee.getPosition());
+            preparedStatement.setInt(2,++PEOPLE_COUNT);
+            preparedStatement.setString(4,employee.getPhone());
+            preparedStatement.setString(5,employee.getFullName());
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    public void addNewLearner(Learner learner){
+        try {
+            PreparedStatement preparedStatement =
+                    connection.prepareStatement("INSERT INTO People(status,cardid,phone,name,first_parent_name," +
+                            "first_parent_phone,second_parent_name,second_parent_phone)"+" VALUES(?,?,?,?,?,?,?,?)");
+            preparedStatement.setString(1,"Learner");
+            preparedStatement.setInt(2,++PEOPLE_COUNT);
+            preparedStatement.setString(3,learner.getPhone());
+            preparedStatement.setString(4,learner.getFullName());
+            preparedStatement.setString(5,learner.getFirstParentName());
+            preparedStatement.setString(6,learner.getFirstParentPhone());
+            preparedStatement.setString(7,learner.getSecondParentName());
+            preparedStatement.setString(8,learner.getSecondParentPhone());
+            preparedStatement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+    public void addNewTeacher(){
+
     }
 }
